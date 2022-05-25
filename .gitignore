@@ -1,3 +1,7 @@
+# Idea Folder
+.idea
+
+# Obsidian configuration
 .obsidian/app.json
 .obsidian/appearance.json
 .obsidian/hotkeys.json
