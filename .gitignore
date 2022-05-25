@@ -6,3 +6,6 @@
 .obsidian/appearance.json
 .obsidian/hotkeys.json
 .obsidian/workspace
+
+# Plugins files
+.obsidian/plugins/*
