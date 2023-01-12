@@ -459,6 +459,37 @@ sudo pacman -Sy amd_ucode
 sudo pacman -Sy intel_ucode
 ```
 
+#### Policy agent
+
+The role is this agent is to allow unprivileged processes to communicate with priviledged ones. This allow for example to use `reboot` instead of `sudo reboot`
+
+```
+sudo pacman -S polkit
+```
+
+#### AUR
+
+The Arch User Repository brings a consequent amount of packages that have been mde by the users themselves. By default pacman only allow to install from official sources. A tool like `yay` like allow to install user packages.
+
+You will need `git` for this.
+
+```
+sudo pacman -S git
+```
+
+Now clone the `yay` official repo
+
+```
+git clone https://aur.archlinux.org/yay.git
+cd yay
+```
+
+Then build the package from source
+
+```
+makepkg -si
+```
+
 ## Desktop Environment
 
 #### Xorg
