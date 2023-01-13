@@ -171,10 +171,11 @@ The disks are now set to install the system. The installation proceed takes plac
 Mount all non-EFI partitions according to the place they will take.
 
 ```
-mount /dev/$(part2)
+mount /dev/$(part2) /mnt
 ```
 
 > Using `lsblk` you can check which partitions are being mounted and where.
+
 ![](../../assets/img/arch/lsblk_mounted_root.png)
 
 For instance, if you have a partition for your home folder, you may use the following commands.
