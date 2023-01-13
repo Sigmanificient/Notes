@@ -452,12 +452,12 @@ The cpu ucode provide stability and security updates for the cpu.
 
 > With an `amd` CPU
 ```
-sudo pacman -Sy amd_ucode
+sudo pacman -Sy amd-ucode
 ```
 
 > With an `intel` CPU
 ```
-sudo pacman -Sy intel_ucode
+sudo pacman -Sy intel-ucode
 ```
 
 #### Policy agent
