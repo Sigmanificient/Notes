@@ -15,7 +15,7 @@ Create a bootable usb using the iso you download. You can use a tool like [etche
 
 Once your usb stick is ready, boot on it.
 
-![img.png](../../assets/img/arch/live_user_terminal.png)
+![img.png](live_user_terminal.png)
 
 *Live User Terminal after booting Arch GNU/Linux*
 
@@ -78,13 +78,13 @@ pacman -Sy fish
 
 In order to know where you will install arch, you can run `lsblk` to list your get a list of your computer drives.
 
-![](../../assets/img/arch/lsblk_command_output.png)
+![](lsblk_command_output.png)
 
 *On a virtual machine, the main drive might be call `vda`, while in a classic installation it could be either named `sda`, or `nvme` depending on your hardware configuration. If you have multiple drive, make sure to choose the right one.*
 
 Alternatively, you can use the `fdisk -l` command for a similar purpose
 
-![](../../assets/img/arch/fdisk_command_output.png)
+![](fdisk_command_output.png)
 
 *Results ending in `rom`, `loop` or `airoot` may be ignored.*
 
@@ -99,11 +99,11 @@ In this guid, I will use `cfdisk` to setup the disk partitions.
 
 If you get this selection menu when opening `cfdisk`, it means that your drive didn't have any partition table system set before. This is often the case for new or virtual hardware. In  this case, you can select the `gpt` option.
 
-![](../../assets/img/arch/cfdisk_partition_table_selection.png)
+![](cfdisk_partition_table_selection.png)
 
 If you have any partition, you may want to remove then. In a case where you are dual booting with another OS, make sure to delete the correct partition. This process can still be undone until the new partition table is written.
 
-![](../../assets/img/arch/cfdisk_main_menu.png)
+![](cfdisk_main_menu.png)
 
 You will need to set at least 2 partitions, one for the EFI System, and the other one you the Linux Filesystem:
 
@@ -126,7 +126,7 @@ You may also allocate a small partition for swap. Keep in mind that both are ful
 
 In order to confirm your changes, use iter `fdisk -l` or `lsblk`
 
-![](../../assets/img/arch/lsblk_output_with_new_partitions.png)
+![](lsblk_output_with_new_partitions.png)
 
 For now own, l will refer to your root partition as `$(part2)`, and your EFI partition as `$(part1)`, make sure to translate it according to your setup.
 
@@ -176,7 +176,7 @@ mount /dev/$(part2) /mnt
 
 > Using `lsblk` you can check which partitions are being mounted and where.
 
-![](../../assets/img/arch/lsblk_mounted_root.png)
+![](lsblk_mounted_root.png)
 
 For instance, if you have a partition for your home folder, you may use the following commands.
 
@@ -195,7 +195,7 @@ This command will download the core arch packages and add them into the mounted 
 pacstrap -i /mnt base
 ```
 
-![](../../assets/img/arch/pacstrap_dependencies_list.png)
+![](pacstrap_dependencies_list.png)
 ### Generate fstab
 
 To make sure the partition are mounted properly when you will boot your system, linux use a configuration file located in `/etc/fstab`. This is the first configuration file to generate in order to keep the partition layout later on.
@@ -204,7 +204,7 @@ To make sure the partition are mounted properly when you will boot your system, 
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-![](../../assets/img/arch/fstab_file_content.png)
+![](fstab_file_content.png)
 ### Arch Chroot
 
 Using the `arch-chroot` command, it is possible to set the current root the mounted system such that every action will take place inside it.
@@ -216,7 +216,7 @@ arch-chroot /mnt
 
 > `neofetch` is not installed by default use `pacman -Sy neofetch` to install it.
 
-![](../../assets/img/arch/neofetch_arch_chroot.png)
+![](neofetch_arch_chroot.png)
 
 ## System Installation
 
@@ -273,7 +273,7 @@ To set the system language edit the `locale.gen` file and uncomment the locale y
 nano /etc/locale.gen
 ```
 
-![](../../assets/img/arch/locale_gen_entries.png)
+![](locale_gen_entries.png)
 
 Now generate the local for that language
 
@@ -329,7 +329,7 @@ and uncomment the following line
 > Grub is a very popular bootloader among linux system.
 > It will allow to boot on the installed system. I can also be helpful for multi-boot.
 
-![](../../assets/img/arch/grub_screenshot.png)
+![](grub_screenshot.png)
 
 We will assume your system is using `UEFI` mode. If you get an error, you may be on a `i386pc` system.
 
