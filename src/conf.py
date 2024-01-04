@@ -33,19 +33,8 @@ copyright = f"2021 - {date.today().year}, Sigmanificient"
 pygments_style = "sphinx"
 todo_include_todos = True
 
-html_baseurl = "https://notes.1l.is/"
 html_theme = "furo"
-
-html_theme_options = {
-    "repository_url": "https://github.com/Sigmanificient/notes",
-    "repository_branch": "master",
-    "path_to_docs": "source",
-    "use_repository_button": True,
-    "use_issues_button": True,
-    "use_edit_page_button": True,
-    "show_navbar_depth": 2,
-}
-
+html_baseurl = "https://notes.1l.is/"
 html_favicon = "favicon.png"
 
 html_static_path = []
