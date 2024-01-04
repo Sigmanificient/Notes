@@ -1,4 +1,4 @@
-## Install a local server (arch)
+# Install a local server
 
 *First part of original post: https://www.marcogomiero.com/posts/2018/wordpress-arch/*
 

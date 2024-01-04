@@ -1,6 +1,5 @@
 # Qemu, libvirt & virtmanager installation
 
-
 ## Requirement
 
 Check if the virtualisation support is enabled, use the command

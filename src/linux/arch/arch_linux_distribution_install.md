@@ -1,4 +1,4 @@
-# <img src="../../assets/img/arch/arch_logo.png" height="24"/> Arch GNU/Linux Installation
+# Arch GNU/Linux Installation
 
 This is a beginner-friendly guide for a first arch linux installation.
 

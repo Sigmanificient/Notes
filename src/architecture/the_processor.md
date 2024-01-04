@@ -1,3 +1,5 @@
+# The processor
+
 The processor is a central processing unit ( `cpu` ). It's a eletronical component of the computer that handle machine instructions.
 
 ## Historical Context
