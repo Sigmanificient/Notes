@@ -8,6 +8,5 @@ Welcome to my notes
 
 architecture/*
 git/*
-linux/*
 linux/arch/*
 ```
