@@ -1,3 +1,10 @@
+---
+myst:
+  html_meta:
+    "og:title": "notes"
+    "og:description": "my personal notes"
+---
+
 # Notes
 
 Welcome to my notes
