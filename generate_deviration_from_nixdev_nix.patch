@@ -1,0 +1,81 @@
+--- nix.dev/default.nix	2024-01-04 04:13:08.112098438 +0100
++++ nix.dev/default.nix	2024-01-04 04:18:54.262692075 +0100
+@@ -1,7 +1,4 @@
+-{ inputs ? import ./nix/sources.nix
+-, system ? builtins.currentSystem
+-,
+-}:
++{ inputs, system, src }:
+ let
+   pkgs = import inputs.nixpkgs {
+     config = { };
+@@ -9,9 +6,10 @@
+     inherit system;
+   };
+ 
+-  nix-dev = pkgs.stdenv.mkDerivation {
+-    name = "nix-dev";
+-    src = ./.;
++  notes = pkgs.stdenv.mkDerivation {
++    name = "notes";
++    inherit src;
++
+     nativeBuildInputs = with pkgs.python310.pkgs; [
+       linkify-it-py
+       myst-parser
+@@ -26,26 +24,9 @@
+       make html
+     '';
+     installPhase =
+-      let
+-        # Various versions of the Nix manuals, grep for (nix-manual)=
+-        # FIXME: This requires human interaction to update!
+-        # See ./CONTRIBUTING.md for details.
+-        releases = [
+-          "2.19"
+-          "2.18"
+-          "2.13"
+-        ];
+-        inputName = version: pkgs.lib.strings.replaceStrings [ "." ] [ "-" ] version;
+-        src = version: (import inputs."nix_${inputName version}").default.doc;
+-        copy = version: ''
+-          cp -R ${src version}/share/doc/nix/manual/* $out/manual/nix/${version}
+-        '';
+-      in
+-      with pkgs.lib.strings;
+       ''
+-        mkdir -p $out/manual/nix/{${concatStringsSep "," releases}}
+-        ${concatStringsSep "\n" (map copy releases)}
+-        cp -R build/html/* $out/
++        mkdir -p $out/
++        cp -R .build/html/* $out/
+       '';
+   };
+ 
+@@ -63,7 +44,7 @@
+ 
+         def nix_build():
+           p = Popen(
+-            shlex.split("nix-build -A build"),
++            shlex.split("nix build .\#notes"),
+             # capture output as text
+             stdout=PIPE,
+             stderr=PIPE,
+@@ -92,16 +73,5 @@
+     };
+ in
+ {
+-  # build with `nix-build -A build`
+-  build = nix-dev;
+-
+-  shell = pkgs.mkShell {
+-    inputsFrom = [ nix-dev ];
+-    packages = [
+-      devmode
+-      pkgs.niv
+-      pkgs.python310.pkgs.black
+-      pkgs.vale
+-    ];
+-  };
++  inherit devmode notes;
+ }
